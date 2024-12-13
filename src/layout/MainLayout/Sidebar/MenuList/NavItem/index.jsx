@@ -42,9 +42,6 @@ const NavItem = ({ item, level }) => {
   );
 
   let itemTarget = '_self';
-  if (item.target) {
-    itemTarget = '_blank';
-  }
 
   let listItemProps = {
     component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.url} target={itemTarget} />)
@@ -78,7 +75,7 @@ const NavItem = ({ item, level }) => {
         borderRadius: `${customization.borderRadius}px`,
         mb: 0.5,
         alignItems: 'flex-start',
-        backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
+        backgroundColor: 'inherit',
         py: level > 1 ? 1 : 1.25,
         pl: `${level * 24}px`
       }}

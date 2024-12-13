@@ -3,6 +3,10 @@ import { lazy } from 'react';
 // project imports
 import MainLayout from 'layout/MainLayout';
 import Loadable from 'ui-component/Loadable';
+import ProtectedRoute from "./ProtectedRoute";
+import RandomJoke from "../views/jokes/RandomJoke";
+import JokeCategories from "../views/jokes/JokeCategories";
+import Mixology from "../views/mixology/Mixology";
 
 // dashboard routing
 const DashboardDefault = Loadable(lazy(() => import('views/dashboard')));
@@ -21,7 +25,7 @@ const SamplePage = Loadable(lazy(() => import('views/sample-page')));
 
 const MainRoutes = {
   path: '/',
-  element: <MainLayout />,
+  element:<ProtectedRoute><MainLayout /></ProtectedRoute>,
   children: [
     {
       path: '/',
@@ -37,54 +41,37 @@ const MainRoutes = {
       ]
     },
     {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-typography',
-          element: <UtilsTypography />
-        }
-      ]
+      path: 'jokes/random/:category?',
+      element: (
+          <ProtectedRoute>
+            <RandomJoke />
+          </ProtectedRoute>
+      )
     },
     {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-color',
-          element: <UtilsColor />
-        }
-      ]
+      path: 'jokes/categories',
+      element: (
+          <ProtectedRoute>
+            <JokeCategories />
+          </ProtectedRoute>
+      )
     },
     {
-      path: 'utils',
-      children: [
-        {
-          path: 'util-shadow',
-          element: <UtilsShadow />
-        }
-      ]
+      path: 'jokes/:category?',
+      element: (
+          <ProtectedRoute>
+            <RandomJoke />
+          </ProtectedRoute>
+      )
     },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'tabler-icons',
-    //       element: <UtilsTablerIcons />
-    //     }
-    //   ]
-    // },
-    // {
-    //   path: 'icons',
-    //   children: [
-    //     {
-    //       path: 'material-icons',
-    //       element: <UtilsMaterialIcons />
-    //     }
-    //   ]
-    // },
     {
-      path: 'sample-page',
-      element: <SamplePage />
-    }
+      path: 'cocktails',
+      element: (
+          <ProtectedRoute>
+            <Mixology />
+          </ProtectedRoute>
+      )
+    },
   ]
 };
 
