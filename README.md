@@ -14,6 +14,14 @@ This app provides users with a variety of Chuck Norris jokes and a mixology feat
 
 ## Usage
 
+### Login 
+
+1.Open the app.
+
+2.Login with the following credentials: 
+- **Email**: joker@gmail.com 
+- **Password**: joker1
+
 ### Random Joke
 
 1. Click on the "Random Joke" button to fetch a random Chuck Norris joke.
